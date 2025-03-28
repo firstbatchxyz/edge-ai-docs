@@ -1,0 +1,84 @@
+---
+title: Frequently Asked Questions
+description: "Find answers to common questions about running Dria nodes"
+---
+
+## Gemini Models
+
+<AccordionGroup>
+  <Accordion title="Why am I not earning points with Gemini models?">
+    If you're running older Gemini models (like 1.5 Flash or Pro), consider switching to newer versions if available and listed as active on the [Dria Edge AI Dashboard](https://dria.co/edge-ai). Not all models receive tasks equally. To earn points, you generally need to run models that are actively being requested by users on the network. Check the dashboard to see which models are currently processing tasks.
+  </Accordion>
+  
+  <Accordion title="Is Gemini available in my region?">
+    Gemini may be unavailable in your region — if so, there's no fix for that at the moment.
+  </Accordion>
+  
+  <Accordion title="Are there rate limits with free Gemini accounts?">
+    If you are using a Free Gemini account, there might be rate limits imposed by Google. If your node stops earning due to API limits, you may need to wait for the limits to reset or consider a paid tier if usage is high.
+  </Accordion>
+</AccordionGroup>
+
+## Running Multiple Nodes
+
+<Warning>
+  You can run multiple nodes under the same IP address or Wi-Fi network, **but you must use a unique private key (wallet) for each node instance.** Using the same private key for multiple active nodes can lead to conflicts and issues with task assignment and rewards.
+</Warning>
+
+## Avoid Using WSL
+
+If you're using WSL (Windows Subsystem for Linux), please avoid it for running the Dria node launcher. It is known to cause compatibility issues.
+
+Instead, open a native Windows terminal (like CMD or PowerShell) **as Administrator** and run:
+
+```powershell
+powershell -c "irm https://dria.co/launcher.ps1 | iex"
+```
+
+## System Requirements
+
+<Accordion title="What are the minimum system requirements?">
+  There isn't a strict minimum, as you can run API-based models (Gemini, OpenAI, etc.) which rely on external services, not your local hardware. However, if you want to run local models using Ollama, your system needs to be powerful enough to achieve at least **15 Eval TPS** for the specific model you choose. Refer to the **[Selecting Models](/selecting-models)** page for performance benchmarks on various hardware configurations.
+</Accordion>
+
+## Node Status
+
+<Accordion title="How do I check if my node is online and working?">
+  Visit the [Dria Edge AI Dashboard](https://dria.co/edge-ai) and log in with the wallet associated with your node. The dashboard shows your node's status (Online/Offline), recent activity, and earned points. If the status is "Online" and you see points accumulating (even if intermittently), your node is working.
+</Accordion>
+
+## Earning Points
+
+<Accordion title="Why am I not earning points?">
+  There could be several reasons:
+  
+  1. **No tasks:** There might be low demand for the specific model(s) your node is running. Check the dashboard and consider switching to more active models.
+  
+  2. **Node offline:** Ensure your node is running and connected to the internet. Check the dashboard for its status.
+  
+  3. **Performance issues (Local Models):** If running an Ollama model, ensure your system meets the performance requirements (>= 15 Eval TPS). Use `dkn-compute-launcher measure`.
+  
+  4. **API Key Issues (API Models):** If running API models, ensure your API keys are correct, valid, and have sufficient quota/credits.
+  
+  5. **Network Issues:** Firewalls or network configurations might prevent your node from communicating effectively. Ensure the required ports (default 4001) are open.
+  
+  Refer to the **[Rewards](/rewards)** page for more details on the earning mechanism.
+</Accordion>
+
+## Ollama Requirements
+
+<Accordion title="Do I need Ollama installed if I only run API models?">
+  No. If you only plan to serve models via APIs (like OpenAI, Gemini, OpenRouter), you do not need to install Ollama. You only need Ollama if you intend to run models locally on your own hardware.
+</Accordion>
+
+## Points Updates
+
+<Accordion title="How often are $DRIA Points updated?">
+  Points shown on the [Dria Edge AI Dashboard](https://dria.co/edge-ai) are updated in near real-time as your node successfully completes tasks.
+</Accordion>
+
+## Performance Metrics
+
+<Accordion title="What is TPS?">
+  TPS stands for **Tokens Per Second**. It's a common metric used to measure the processing speed of AI models. In the context of Dria and the `measure` command, we primarily look at **Eval TPS** to determine if a local Ollama model is fast enough to participate effectively in the network (generally >= 15 TPS).
+</Accordion> 

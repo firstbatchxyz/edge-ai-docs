@@ -1,0 +1,51 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" rx="8" fill="#F5F5F5"/>
+  
+  <!-- Top Navigation Bar -->
+  <rect width="800" height="60" rx="8" fill="#0059F7"/>
+  <rect x="40" y="20" width="100" height="20" rx="4" fill="white"/>
+  <circle cx="740" cy="30" r="15" fill="white"/>
+  
+  <!-- Left Sidebar -->
+  <rect width="220" height="440" y="60" rx="0" fill="#FFFFFF"/>
+  <rect x="20" y="100" width="180" height="16" rx="4" fill="#0059F7" fill-opacity="0.1"/>
+  <rect x="20" y="150" width="180" height="16" rx="4" fill="#000000" fill-opacity="0.1"/>
+  <rect x="20" y="180" width="180" height="16" rx="4" fill="#000000" fill-opacity="0.1"/>
+  <rect x="20" y="210" width="180" height="16" rx="4" fill="#000000" fill-opacity="0.1"/>
+  <rect x="20" y="240" width="180" height="16" rx="4" fill="#000000" fill-opacity="0.1"/>
+  
+  <!-- Main Content Area -->
+  <rect x="240" y="80" width="540" height="80" rx="8" fill="white"/>
+  <rect x="260" y="100" width="200" height="20" rx="4" fill="#333333"/>
+  <rect x="260" y="130" width="300" height="12" rx="4" fill="#666666"/>
+  
+  <!-- Stats Cards -->
+  <rect x="240" y="180" width="260" height="120" rx="8" fill="white"/>
+  <rect x="260" y="200" width="120" height="20" rx="4" fill="#666666"/>
+  <rect x="260" y="240" width="160" height="30" rx="4" fill="#0059F7"/>
+  
+  <rect x="520" y="180" width="260" height="120" rx="8" fill="white"/>
+  <rect x="540" y="200" width="120" height="20" rx="4" fill="#666666"/>
+  <rect x="540" y="240" width="160" height="30" rx="4" fill="#0059F7"/>
+  
+  <!-- Activity Chart -->
+  <rect x="240" y="320" width="540" height="160" rx="8" fill="white"/>
+  <rect x="260" y="340" width="150" height="20" rx="4" fill="#333333"/>
+  
+  <!-- Chart -->
+  <path d="M260 430L300 400L340 410L380 380L420 390L460 370L500 360L540 380L580 350L620 370L660 340L700 360L740 330" stroke="#0059F7" stroke-width="3"/>
+  
+  <!-- Points -->
+  <circle cx="300" cy="400" r="4" fill="#0059F7"/>
+  <circle cx="340" cy="410" r="4" fill="#0059F7"/>
+  <circle cx="380" cy="380" r="4" fill="#0059F7"/>
+  <circle cx="420" cy="390" r="4" fill="#0059F7"/>
+  <circle cx="460" cy="370" r="4" fill="#0059F7"/>
+  <circle cx="500" cy="360" r="4" fill="#0059F7"/>
+  <circle cx="540" cy="380" r="4" fill="#0059F7"/>
+  <circle cx="580" cy="350" r="4" fill="#0059F7"/>
+  <circle cx="620" cy="370" r="4" fill="#0059F7"/>
+  <circle cx="660" cy="340" r="4" fill="#0059F7"/>
+  <circle cx="700" cy="360" r="4" fill="#0059F7"/>
+  <circle cx="740" cy="330" r="4" fill="#0059F7"/>
+</svg> 

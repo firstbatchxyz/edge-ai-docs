@@ -1,0 +1,264 @@
+---
+title: Running a Node
+description: "Learn how to set up and run your Dria Compute Node"
+---
+
+## Introduction
+
+The **Dria Compute Launcher** is a simple and efficient way to set up and run the [Dria Compute Node](https://github.com/firstbatchxyz/dkn-compute-node). The launcher automatically handles environment setup, model selection, and binary management, making it easy to start the node with minimal configuration.
+
+## Features
+
+<Check>
+  **Settings Menu**: Change various settings such as your wallet, ports and API keys, all without leaving the launcher.
+</Check>
+<Check>
+  **Model Selection**: Choose your models with a nice menu.
+</Check>
+<Check>
+  **Model Benchmarking**: Measure TPS for Ollama models to see if your machine can handle them.
+</Check>
+<Check>
+  **Automatic Updates**: Launcher will automatically update a running compute node when there is an update & restart it.
+</Check>
+<Check>
+  **Version Control**: You can select & run a specific compute node release.
+</Check>
+<Check>
+  **Auto-detect Ollama**: Launcher will check Ollama if you are using it's model, and start its server if required.
+</Check>
+
+## Installation
+
+<Tabs>
+  <Tab title="Linux / macOS">
+    Open a terminal and run the following command, it will ask for your user password:
+
+    ```bash
+    curl -fsSL https://dria.co/launcher | bash
+    ```
+
+    <Note>
+      Some Apple devices need you to bypass macOS's security warning. If you see "macOS cannot verify that this app is free from malware" when using the launcher use the following command:
+
+      ```bash
+      xattr -d com.apple.quarantine dkn-compute-launcher
+      ```
+    </Note>
+  </Tab>
+  <Tab title="Windows">
+    Open a terminal in Administrator mode, and run the following command:
+
+    ```powershell
+    powershell -c "irm https://dria.co/launcher.ps1 | iex"
+    ```
+
+    You may need to allow network access to the launcher if Windows prompts you to do so.
+  </Tab>
+  <Tab title="Build from Source">
+    You can build from source using [Rust](https://www.rust-lang.org/) & install the launcher globally using the command below:
+
+    ```bash
+    cargo install --git https://github.com/firstbatchxyz/dkn-compute-launcher
+    ```
+
+    The [minimum supported rust version](https://github.com/foresterre/cargo-msrv) (MSRV) for the launcher is `1.81.0`.
+  </Tab>
+</Tabs>
+
+## Usage
+
+Double-click the executable or run it via the command line. Use `help` to see available options:
+
+```bash
+# as a Unix executable
+dkn-compute-launcher help
+
+# as a Windows executable
+dkn-compute-launcher.exe help
+```
+
+All commands that you see with `help` have their own help messages within as well, you can view it with:
+
+```bash
+dkn-compute-launcher <some-command> --help
+```
+
+## Model Providers
+
+The purpose of running a Dria Compute Node is to serve LLMs to the network. These models can either be locally-hosted models via Ollama, or API-based models such as Gemini and OpenAI.
+
+<AccordionGroup>
+  <Accordion title="API-Based Models">
+    To serve API-based models ([OpenAI](https://openai.com/), [Gemini](https://gemini.google.com/app), [OpenRouter](https://openrouter.ai/)), you will need to get their API keys.
+  </Accordion>
+  <Accordion title="Local Models with Ollama">
+    To serve a locally-hosted model with [Ollama](https://ollama.com/), you of course need Ollama installed, and you must make sure that your machine can handle your chosen models. See the "Measuring Local Models" section below to see the command-line tools that help you measure TPS.
+  </Accordion>
+</AccordionGroup>
+
+## Starting a Node
+
+Start your node with `start` command:
+
+```bash
+dkn-compute-launcher start
+```
+
+<Note>
+  When you are running for the first time, the launcher will prompt you to fill in
+  node information, such as your private key, chosen models and their respective provider information.
+</Note>
+
+You can stop the node with <kbd>CTRL+C</kbd> (on Linux / Windows) or <kbd>CMD+C</kbd> (on macOS)
+
+## Referrals Program
+
+You can earn $DRIA points if you refer other users! When you refer a user, for each point they earn you earn a portion of those points as well.
+To get a referral code, enter someone's referral code and such, use the following command:
+
+```bash
+dkn-compute-launcher referrals
+```
+
+<Warning>
+  Each referral code only has 10 uses! Once you have referred 10 users, your code will no longer work.
+</Warning>
+
+## Changing Settings
+
+You can use the `settings` command to change anything about your node:
+
+```bash
+dkn-compute-launcher settings
+```
+
+You will be greeted with a menu, where you can navigate with arrow keys <kbd>↑</kbd> <kbd>↓</kbd> and select an option with enter <kbd>ENTER</kbd>:
+
+```yaml
+? Choose settings (for .env)
+> Wallet
+  Port
+  Models
+  Ollama
+  API Keys
+  Log Levels
+  ✓ Save & Exit
+  ✗ Abort Changes
+```
+
+Using this menu, you are able to change the following settings:
+
+- **Wallet**: change your secret key
+- **Port**: edit your listen address port, defaults to `4001`
+- **Models**: view all models & edit the models that you want to serve
+- **Ollama**: edit host & port of the Ollama server
+- **API Keys**: change API keys for providers
+- **Log Levels**: change log-levels for modules within compute node & launcher
+
+<Tip>
+  You can always exit the process (ungracefully) with <kbd>CTRL+C</kbd> (on Linux / Windows) or <kbd>CMD+C</kbd> (on macOS), or <kbd>ESC</kbd> on both systems.
+</Tip>
+
+## Choosing Models
+
+When you select <kbd>Model</kbd> option in the Settings menu, you will be greeted with a list of model providers:
+
+```bash
+? Select a model provider:
+> ollama
+  openai
+  gemini
+  openrouter
+  VLLM
+  ← Go Back
+```
+
+Here, you can select a provider to choose models served by them, where you will be greeted with the following menu:
+
+```bash
+> Select a model provider: openai
+? Choose your models with SPACE, then press ENTER:
+  [ ] gpt-4-turbo
+  [x] gpt-4o
+> [ ] gpt-4o-mini
+  [ ] o1-mini
+  [ ] o1-preview
+  [ ] o1
+  [ ] o3-mini
+# ...
+```
+
+Within this menu you can navigate by using the arrow keys <kbd>↑</kbd> <kbd>↓</kbd> and press <kbd>SPACE</kbd> to select a model. You can select all models using <kbd>→</kbd>, or de-select everything with <kbd>←</kbd>. To finish selecting models, press <kbd>ENTER</kbd>.
+
+When you are done selecting models for all providers, you can go back to the main menu by selecting <kbd>← Go Back</kbd>.
+
+## Measuring Local Models
+
+You can test your machine's performance on locally served Ollama models using the `measure` command:
+
+```bash
+dkn-compute-launcher measure
+```
+
+Within Dria Knowledge Network, local models require you to reach a certain level of performance, typically **at least 15 TPS (Tokens Per Second)** on the evaluation metric, to be eligible for tasks. This command will measure your selected models, and then print a table of the results. We are particularly interested in **Eval TPS** and **Total (ms)** for our model performance.
+
+```
+Model                                Prompt TPS   Time (ms)    Eval TPS     Time (ms)    Total (ms)
+qwen2.5-coder:1.5b                   40.7747      981          67.9260      2488         3496
+deepseek-r1:1.5b                     21.4724      652          63.3591      16588        17255
+driaforall/tiny-agent-a:1.5b         22.5653      842          47.1771      2586         3443
+```
+
+Measurements the fail to meet the Compute Node requirements (e.g., below 15 Eval TPS) will be colored in red.
+
+## Displaying $DRIA Points
+
+Use the `points` command to display how much you have earned!
+
+```bash
+dkn-compute-launcher points
+```
+
+## Update Manually
+
+Using the `update` command you can check for updates & automatically update your compute node and launcher.
+
+```bash
+dkn-compute-launcher update
+```
+
+You don't need to do this usually, as the launcher will always check for updates when you run the `start` command.
+
+## Environment Editor
+
+For more advanced users that would like to view the environment file in more detail & plain-text, we provide the `env-editor` command:
+
+```bash
+dkn-compute-launcher env-editor
+```
+
+This command will open the selected environment file using a terminal-native text editor, allowing you to edit everything in it. If there happens to be multiple keys for a single value in the environment, the `settings` command will edit the _last uncommented key_ on **Save**.
+
+## Running a Specific Release
+
+Using the `specific` command you can choose to run a specific release:
+
+```bash
+# select & download
+dkn-compute-launcher specific
+
+# run after downloading
+dkn-compute-launcher specific --run
+
+# specify tag, skipping the selection menu
+dkn-compute-launcher specific --run --tag 0.3.4
+```
+
+This is completely optional, and should mostly be used for debugging and testing on the live network.
+When you run a specific release your node & launcher will **not** be automatically updated!
+
+<Warning>
+  The Dria Knowledge Network always considers the latest `minor` version as the active version; therefore,
+  if the latest is `0.3.x` and you decide to run a smaller version like `0.2.x` you will most likely kept out of network due to protocol mismatch.
+</Warning> 

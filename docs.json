@@ -1,76 +1,39 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Dria SDK Documentation",
+  "name": "Dria Node Runner Guide",
   "colors": {
-    "primary": "#0D47A1",
-    "light": "#2196F3",
-    "dark": "#0D47A1"
+    "primary": "#0059F7",
+    "light": "#4D89FC",
+    "dark": "#003BB8"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
+  "logo": {
+    "light": "/images/Dria_Chrome-Logo.png",
+    "dark": "/images/Dria_Chrome-Logo.png"
+  },
+  "metadata": {
+    "og:image": "/images/Dria_Chrome-Logo.png",
+    "twitter:image": "/images/Dria_Chrome-Logo.png"
+  },
   "navigation": {
     "tabs": [
       {
         "tab": "Guides",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Getting Started",
             "pages": [
               "introduction",
-              "quickstart",
-              "development"
+              "how-to-run",
+              "selecting-models",
+              "rewards"
             ]
           },
           {
-            "group": "Core Concepts",
+            "group": "Help",
             "pages": [
-              "essentials/workflows",
-              "essentials/pipelines",
-              "essentials/models",
-              "essentials/data-generation"
-            ]
-          },
-          {
-            "group": "Advanced",
-            "pages": [
-              "essentials/structured-outputs",
-              "essentials/web-search",
-              "essentials/custom-functions"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Client",
-            "pages": [
-              "api-reference/client"
-            ]
-          },
-          {
-            "group": "Workflows",
-            "pages": [
-              "api-reference/workflow-builder",
-              "api-reference/operators",
-              "api-reference/steps"
-            ]
-          },
-          {
-            "group": "Pipelines",
-            "pages": [
-              "api-reference/pipeline-builder",
-              "api-reference/step-template",
-              "api-reference/callbacks"
-            ]
-          },
-          {
-            "group": "Factory",
-            "pages": [
-              "api-reference/factory/simple",
-              "api-reference/factory/complex",
-              "api-reference/factory/search"
+              "faq"
             ]
           }
         ]
@@ -79,45 +42,36 @@
     "global": {
       "anchors": [
         {
-          "anchor": "GitHub",
-          "href": "https://github.com/firstbatchxyz",
-          "icon": "github"
+          "anchor": "Dria Edge AI Dashboard",
+          "href": "https://dria.co/edge-ai",
+          "icon": "gauge"
         },
         {
-          "anchor": "Discord",
-          "href": "https://discord.gg/dria",
-          "icon": "discord"
-        },
-        {
-          "anchor": "Website",
+          "anchor": "Dria Website",
           "href": "https://dria.co",
           "icon": "globe"
+        },
+        {
+          "anchor": "Discord Community",
+          "href": "https://discord.gg/YVBZgfA7",
+          "icon": "discord"
         }
       ]
     }
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "https://discord.gg/dria"
-      }
-    ],
+    "links": [],
     "primary": {
       "type": "button",
-      "label": "Run a Node",
-      "href": "https://github.com/firstbatchxyz/dkn-compute-node"
+      "label": "Join Discord",
+      "href": "https://discord.gg/YVBZgfA7"
     }
   },
   "footer": {
     "socials": {
+      "twitter": "https://twitter.com/driaforall",
       "github": "https://github.com/firstbatchxyz",
-      "discord": "https://discord.gg/dria",
-      "linkedin": "https://linkedin.com/company/firstbatch"
+      "discord": "https://discord.gg/YVBZgfA7"
     }
   }
-}
+} 
