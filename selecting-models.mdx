@@ -9,13 +9,13 @@ Points are updated in real-time at [Dria Edge AI Dashboard](https://dria.co/edge
 
 <Steps>
   <Step title="Check Active Models">
-    Visit [dria.co/edge-ai](https://dria.co/edge-ai) and check all the models listed under "Tasks Completed by Models (7 Days)" and the live "Data Generation Logs".
+    Visit [dria.co/edge-ai](https://dria.co/edge-ai) and check all the models listed under "Tasks Completed by Models (7 Days)" and the live "Data Generation Logs". The currently supported models are also listed below.
   </Step>
   <Step title="Identify High-Demand Models">
     Observe which models have been getting the most tasks recently from these two sections.
   </Step>
   <Step title="Test Your Hardware">
-    Run `dkn-compute-launcher measure` to test Ollama models on your device.
+    For locally hosted models, run `dkn-compute-launcher measure` to test them on your device.
   </Step>
   <Step title="Check Performance">
     If a model achieves an **Eval TPS** score higher than **15**, your device can likely run that model effectively for the network.
@@ -25,8 +25,33 @@ Points are updated in real-time at [Dria Edge AI Dashboard](https://dria.co/edge
   </Step>
 </Steps>
 
+## Supported Models
+
+Here is the list of currently supported models you can run.
+
+### API-Based Models
+These models do not require local hardware testing as their performance depends on the API provider. You will need valid API keys to run them.
+
+- Claude 3.7 Sonnet
+- Claude 3.5 Sonnet
+- Gemini 2.5 Pro Experimental
+- Gemini 2.0 Flash
+- GPT-4o-mini
+- GPT-4o
+
+### Locally-Hosted Models (Ollama)
+You should test these models on your hardware using the `dkn-compute-launcher measure` command to ensure they meet the performance requirements. The model names for use with the launcher are:
+
+- `gemma3:4b`
+- `gemma3:12b`
+- `gemma3:27b`
+- `llama3.3:70b-instruct`
+- `llama3.1:8b-instruct`
+- `llama3.2:1b-instruct`
+- `mistral-nemo:12b`
+
 <Note>
-  API-based models (like those from Gemini, OpenAI, OpenRouter) do not require local measurement with the `measure` command, as their performance depends on the API provider, not your local hardware. You only need to measure locally hosted Ollama models.
+API-based models (like those from Gemini, OpenAI, and Claude) do not require local measurement with the `measure` command, as their performance depends on the API provider, not your local hardware. You only need to measure locally hosted Ollama models.
 </Note>
 
 ## Changing Models
@@ -54,89 +79,70 @@ TPS stands for Tokens Per Second. It's a measure of how fast the AI model can pr
 
 ## Hardware Performance Benchmarks
 
-Below are model benchmarks for various hardware configurations. We've listed Ollama models that can serve an **Eval TPS** higher than 15 for each setting.
+Below are some performance benchmarks for running supported Ollama models on various cloud GPU configurations.
 
 <AccordionGroup>
-  <Accordion title="8 vCPUs and 16 GB of RAM">
-    - **llama3.2:1b**: 22.6293
-    - **llama3.2:1b-text-q4_K_M**: 25.0413
-    - **qwen2.5-coder:1.5b**: 21.7418
-    - **deepseek-r1:1.5b**: 29.7842
-    - **driaforall/tiny-agent-a:0.5b**: 54.5455
-    - **driaforall/tiny-agent-a:1.5b**: 19.9501
+  <Accordion title="Gemma3 4B">
+    | Configuration | Estimated TPS |
+    | :--- | :--- |
+    | A10 (24GB) | ~65 TPS |
+    | A5000 | ~60 TPS |
+    | A40 | ~60 TPS |
+    | A40 (48GB) | ~60 TPS |
+    | A5000 (24GB) | ~60 TPS |
+  </Accordion>
+
+  <Accordion title="Gemma3 12B">
+    | Configuration | Estimated TPS |
+    | :--- | :--- |
+    | A100 SXM (40GB) | ~55 TPS |
+    | A100 SXM (80GB) | ~55 TPS |
+    | A100 PCIe (80GB) | ~50 TPS |
+    | A100 SXM4 | ~50 TPS |
+    | A100 80GB | ~50 TPS |
+  </Accordion>
+
+  <Accordion title="Gemma3 27B">
+    | Configuration | Estimated TPS |
+    | :--- | :--- |
+    | 2× H100 SXM | ~55-60 TPS |
+    | 2× H100 NVLink | ~55 TPS |
+  </Accordion>
+
+  <Accordion title="Llama 3.1 8B Instruct">
+    | Configuration | Estimated TPS |
+    | :--- | :--- |
+    | A100 SXM (80GB) | ~50 TPS |
+    | A100 SXM (40GB) | ~50 TPS |
+    | A100 SXM4 | ~50 TPS |
+    | A100 80GB | ~50 TPS |
+    | A100 PCIe (80GB) | ~45 TPS |
   </Accordion>
   
-  <Accordion title="16 vCPUs and 32 GB of RAM">
-    - **phi3.5:3.8b**: 15.3677
-    - **llama3.2:1b**: 25.6367
-    - **llama3.2:3b**: 16.3185
-    - **llama3.2:1b-text-q4_K_M**: 38.0039
-    - **qwen2.5-coder:1.5b**: 30.3651
-    - **deepseek-r1:1.5b**: 30.2977
+  <Accordion title="Llama 3.2 1B Instruct">
+    | Configuration | Estimated TPS |
+    | :--- | :--- |
+    | A10 (24GB) | ~60 TPS |
+    | A40 (48GB) | ~55 TPS |
+    | A40 | ~55 TPS |
   </Accordion>
-  
-  <Accordion title="32 vCPUs and 64 GB of RAM">
-    - **phi3.5:3.8b**: 22.9944
-    - **llama3.2:1b**: 40.6091
-    - **llama3.2:3b**: 26.0240
-    - **llama3.2:1b-text-q4_K_M**: 56.2027
-    - **qwen2.5-coder:1.5b**: 44.6331
-    - **deepseek-coder:6.7b**: 15.1620
-    - **deepseek-r1:1.5b**: 43.8323
+
+  <Accordion title="Llama 3.3 70B Instruct">
+    | Configuration | Estimated TPS |
+    | :--- | :--- |
+    | 8× H100 SXM | ~110 TPS |
+    | 4× H100 SXM | ~80 TPS |
+    | 4× H100 NVLink | ~80 TPS |
+    | 4× H100 SXM (80GB) | ~80 TPS |
   </Accordion>
-  
-  <Accordion title="48 vCPUs and 96 GB of RAM">
-    - **phi3.5:3.8b**: 29.7455
-    - **llama3.1:latest**: 17.4744
-    - **llama3.1:8b-text-q4_K_M**: 18.1928
-    - **llama3.2:1b**: 49.1555
-    - **llama3.2:3b**: 33.9283
-    - **llama3.2:1b-text-q4_K_M**: 72.7273
-    - **qwen2.5:7b-instruct-q5_0**: 17.0779
-    - **qwen2.5-coder:1.5b**: 56.2710
-    - **qwen2.5-coder:7b-instruct**: 18.2935
-    - **deepseek-coder:6.7b**: 21.2014
-    - **deepseek-r1:1.5b**: 55.0080
-    - **deepseek-r1:7b**: 18.0150
-    - **deepseek-r1:8b**: 16.4574
-    - **deepseek-r1**: 18.0991
-    - **driaforall/tiny-agent-a:0.5b**: 86.2903
-    - **driaforall/tiny-agent-a:1.5b**: 41.6198
-    - **driaforall/tiny-agent-a:3b**: 24.1364
-  </Accordion>
-  
-  <Accordion title="64 vCPUs and 128 GB of RAM">
-    - **phi3.5:3.8b**: 33.8993
-    - **llama3.1:latest**: 19.3015
-    - **llama3.1:8b-text-q4_K_M**: 19.9081
-    - **llama3.2:1b**: 55.6815
-    - **llama3.2:3b**: 36.6654
-    - **llama3.2:1b-text-q4_K_M**: 68.9655
-    - **qwen2.5:7b-instruct-q5_0**: 18.0591
-    - **qwen2.5-coder:1.5b**: 56.7301
-    - **qwen2.5-coder:7b-instruct**: 20.1563
-    - **deepseek-coder:6.7b**: 23.4261
-    - **deepseek-r1:1.5b**: 57.0494
-    - **deepseek-r1:7b**: 20.3577
-    - **deepseek-r1:8b**: 18.6653
-  </Accordion>
-  
-  <Accordion title="GPU: RTX3090">
-    - **phi3.5:3.8b**: 195.0728
-    - **llama3.1:latest**: 103.3473
-    - **llama3.2:1b**: 293.1785
-    - **llama3.2:3b**: 168.7500
-    - **llama3.2:1b-text-q4_K_M**: 349.2497
-    - **qwen2.5:7b-instruct-q5_0**: 114.0511
-    - **qwen2.5-coder:1.5b**: 238.6117
-    - **qwen2.5-coder:7b-instruct**: 125.2194
-    - **deepseek-coder:6.7b**: 141.7769
-    - **deepseek-r1:1.5b**: 235.8560
-    - **deepseek-r1:7b**: 121.9637
-    - **deepseek-r1:8b**: 107.5933
-    - **driaforall/tiny-agent-a:0.5b**: 279.2553
-    - **driaforall/tiny-agent-a:1.5b**: 201.7011
-    - **driaforall/tiny-agent-a:3b**: 135.1052
+
+  <Accordion title="Mistral Nemo 12B Instruct">
+    | Configuration | Estimated TPS |
+    | :--- | :--- |
+    | A100 SXM4 | ~130 TPS |
+    | A100 SXM (80GB) | ~130 TPS |
+    | A100 SXM (40GB) | ~125 TPS |
+    | A100 80GB | ~125 TPS |
   </Accordion>
 </AccordionGroup>
 
