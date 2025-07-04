@@ -106,8 +106,12 @@ We're excited to announce our Early Contributor Appreciation Program as a way to
   This program is not related to any future token launches or $DRIA tokens. Dria currently has no token, and this appreciation event is purely to recognize your early support and enthusiasm.
 </Info>
 
+<Note>
+  **Important:** This Early Contributor Appreciation Program is an **additional reward layer** separate from your $DRIA Points. When you claim rewards from this program, **your $DRIA Points remain completely intact** and are not consumed or reduced in any way. Your points will continue to be available for all future incentive programs and protocols. This is purely bonus appreciation on top of your existing point balance.
+</Note>
+
 <Warning>
-  **Timeline:** We plan to launch this program before the end of May 2025. There isn't a strict deadline yet, as we're focused on completing development. We'll announce the official launch date once it's ready.
+  **Timeline:** The program launches with the first payout on **July 10th**. This marks the beginning of our monthly reward distribution cycles for active node contributors.
 </Warning>
 
 Your accumulated $DRIA Points will remain unaffected by this program and will still count toward future incentives once Dria becomes a completely decentralized protocol.
@@ -116,47 +120,63 @@ Your accumulated $DRIA Points will remain unaffected by this program and will st
 
 <Steps>
   <Step title="Earn $DRIA Points">
-    Your node earns points by successfully completing tasks on the network.
-    The conversion rate is fixed: 1 $DRIA Point = 0.00001 USDC
+    Your node earns points by successfully completing tasks on the network. All your accumulated points across time contribute to your total score.
   </Step>
-  <Step title="Monthly Reward Pool">
-    At the end of each 30-day cycle, we calculate all $DRIA Points earned across the network and create a Reward Pool with the equivalent USDC value.
-    
-    For example, if the network collectively earns 100,000,000 $DRIA Points in a month, the reward pool receives 1,000 USDC.
+  <Step title="Eligibility & Point Calculation">
+    Only nodes that have been **active within the last 30 days** are eligible for rewards. However, the calculation uses **all-time points** earned by these active nodes, not just points from the last 30 days.
   </Step>
-  <Step title="Meet Eligibility Requirements">
-    To qualify for rewards, you'll need to collect at least **1,000,000 $DRIA Points** during the 30-day period.
+  <Step title="Reward Pool Creation">
+    The **total reward pool** is calculated by multiplying the **combined points of all eligible nodes** by **0.000025 USD**. This creates the USD value of the pool that will be distributed among all participants.
     
-    This threshold may be adjusted periodically based on network activity.
+    For example, if eligible nodes have a combined total of 100,000,000 $DRIA Points, the total reward pool will be 2,500 USD worth of ETH to be shared among all eligible nodes.
+    
+    <Warning>
+      **Important:** Your individual points are NOT directly multiplied by 0.000025. This formula only determines the size of the shared reward pool in USD value.
+    </Warning>
   </Step>
-  <Step title="Receive Your Share">
-    Eligible node operators receive rewards proportional to their contribution, with a maximum of **10 USDC** per operator per cycle.
+  <Step title="Percentile Distribution">
+    Among eligible nodes, participants are ranked by their total points and divided into percentiles. The reward distribution follows this structure:
     
-    Your reward is calculated as:
-    $$
-    \text{Your Reward} = \min\left(\frac{\text{Your Points}}{\text{Total Qualified Points}} \times \text{Reward Pool}, \text{10 USDC}\right)
-    $$
+    - **Top 10%** (90th+ percentile): 20% of reward pool
+    - **80-90th percentile**: 18% of reward pool  
+    - **70-80th percentile**: 16% of reward pool
+    - **60-70th percentile**: 14% of reward pool
+    - **50-60th percentile**: 12% of reward pool
+    - **40-50th percentile**: 9% of reward pool
+    - **30-40th percentile**: 6% of reward pool
+    - **Bottom 30%**: 5% of reward pool
+  </Step>
+  <Step title="Individual Rewards">
+    Within each percentile group, rewards are distributed proportionally based on each node's share of points within that group.
+    
+    **Your actual reward calculation:**
+    Your reward = (Your points / Total points in your percentile) × (Your percentile's % of total pool) × (Total reward pool in USD)
+    
+    <Info>
+      **Example:** If you're in the top 10% with 5,000,000 points, your percentile has 50,000,000 total points, and the total pool is 2,500 USD:
+      Your reward = (5,000,000 / 50,000,000) × 20% × 2,500 USD = 50 USD worth of ETH
+    </Info>
   </Step>
 </Steps>
 
-<Note>
-  If the total rewards distributed are less than the amount available in the Reward Pool, the surplus rolls over to the next cycle, increasing the next month's Reward Pool.
-</Note>
+<Warning>
+  **Important:** These distribution ratios apply specifically to the **first payout starting July 10th**. For subsequent monthly payouts, the reward pool will be calculated using only the last 30 days' points, and distribution ratios will be adjusted based on the active node distribution patterns.
+</Warning>
 
 ### Distribution Process
 
 <CardGroup cols={2}>
   <Card title="Claiming Rewards" icon="wallet">
-    Rewards will be distributed to the wallet address connected to your node at the end of each cycle.
+    Rewards are calculated in **USD value** but distributed as **ETH equivalent** and can be claimed by logging into the [dria.co/edge-ai](https://dria.co/edge-ai) dashboard with the wallet address connected to your node.
   </Card>
   <Card title="Verification" icon="magnifying-glass">
-    All reward calculations will be shared transparently via our community channels for operators to verify.
+    All reward calculations will be shared transparently via our community channels for operators to verify their percentile placement and reward allocation.
   </Card>
   <Card title="Timeline" icon="calendar">
-    The first reward cycle begins on July 1, 2023, with distributions occurring within 10 days after cycle completion.
+    The first reward cycle begins on **July 10th** with the initial payout. Subsequent cycles will occur monthly with adjusted distribution ratios.
   </Card>
   <Card title="Reporting" icon="chart-bar">
-    Monthly reports will detail total points earned, reward pool size, and distribution metrics.
+    Monthly reports will detail total points earned, reward pool size (in USD), percentile distributions, and individual reward allocations (ETH equivalent values).
   </Card>
 </CardGroup>
 
