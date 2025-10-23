@@ -86,16 +86,7 @@ dkn-compute-launcher <some-command> --help
 
 ## Model Providers
 
-The purpose of running a Dria Compute Node is to serve LLMs to the network. These models can either be locally-hosted models via Ollama, or API-based models such as Gemini and OpenAI.
-
-<AccordionGroup>
-  <Accordion title="API-Based Models">
-    To serve API-based models ([OpenAI](https://openai.com/), [Gemini](https://gemini.google.com/app), [OpenRouter](https://openrouter.ai/)), you will need to get their API keys.
-  </Accordion>
-  <Accordion title="Local Models with Ollama">
-    To serve a locally-hosted model with [Ollama](https://ollama.com/), you of course need Ollama installed, and you must make sure that your machine can handle your chosen models. See the "Measuring Local Models" section below to see the command-line tools that help you measure TPS.
-  </Accordion>
-</AccordionGroup>
+The purpose of running a Dria Compute Node is to serve LLMs to the network. All models are served locally via [Ollama](https://ollama.com/). You will need Ollama installed, and you must make sure that your machine can handle your chosen models. See the "Measuring Local Models" section below to see the command-line tools that help you measure TPS.
 
 ## Starting a Node
 
@@ -107,7 +98,7 @@ dkn-compute-launcher start
 
 <Note>
   When you are running for the first time, the launcher will prompt you to fill in
-  node information, such as your private key, chosen models and their respective provider information.
+  node information, such as your private key and chosen models.
 </Note>
 
 You can stop the node with <kbd>CTRL+C</kbd> (on Linux / Windows) or <kbd>CMD+C</kbd> (on macOS)
@@ -141,7 +132,6 @@ You will be greeted with a menu, where you can navigate with arrow keys <kbd>↑
   Port
   Models
   Ollama
-  API Keys
   Log Levels
   ✓ Save & Exit
   ✗ Abort Changes
@@ -153,7 +143,6 @@ Using this menu, you are able to change the following settings:
 - **Port**: edit your listen address port, defaults to `4001`
 - **Models**: view all models & edit the models that you want to serve
 - **Ollama**: edit host & port of the Ollama server
-- **API Keys**: change API keys for providers
 - **Log Levels**: change log-levels for modules within compute node & launcher
 
 <Tip>
@@ -162,36 +151,20 @@ Using this menu, you are able to change the following settings:
 
 ## Choosing Models
 
-When you select <kbd>Model</kbd> option in the Settings menu, you will be greeted with a list of model providers:
+When you select <kbd>Model</kbd> option in the Settings menu, you will be greeted with a list of available Ollama models:
 
 ```bash
-? Select a model provider:
-> ollama
-  openai
-  gemini
-  openrouter
-  VLLM
-  ← Go Back
-```
-
-Here, you can select a provider to choose models served by them, where you will be greeted with the following menu:
-
-```bash
-> Select a model provider: openai
 ? Choose your models with SPACE, then press ENTER:
-  [ ] gpt-4-turbo
-  [x] gpt-4o
-> [ ] gpt-4o-mini
-  [ ] o1-mini
-  [ ] o1-preview
-  [ ] o1
-  [ ] o3-mini
-# ...
+  [ ] gemma3:4b
+  [x] gemma3:12b
+> [ ] gemma3:27b
+  [ ] llama3.3:70b-instruct
+  [ ] llama3.1:8b-instruct
+  [ ] llama3.2:1b-instruct
+  [ ] mistral-nemo:12b
 ```
 
 Within this menu you can navigate by using the arrow keys <kbd>↑</kbd> <kbd>↓</kbd> and press <kbd>SPACE</kbd> to select a model. You can select all models using <kbd>→</kbd>, or de-select everything with <kbd>←</kbd>. To finish selecting models, press <kbd>ENTER</kbd>.
-
-When you are done selecting models for all providers, you can go back to the main menu by selecting <kbd>← Go Back</kbd>.
 
 ## Measuring Local Models
 

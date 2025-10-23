@@ -27,20 +27,9 @@ Points are updated in real-time at [Dria Edge AI Dashboard](https://dria.co/edge
 
 ## Supported Models
 
-Here is the list of currently supported models you can run.
+Here is the list of currently supported models you can run. All models are served locally via Ollama and require testing on your hardware using the `dkn-compute-launcher measure` command to ensure they meet the performance requirements.
 
-### API-Based Models
-These models do not require local hardware testing as their performance depends on the API provider. You will need valid API keys to run them.
-
-- Claude 3.7 Sonnet
-- Claude 3.5 Sonnet
-- Gemini 2.5 Pro Experimental
-- Gemini 2.0 Flash
-- GPT-4o-mini
-- GPT-4o
-
-### Locally-Hosted Models (Ollama)
-You should test these models on your hardware using the `dkn-compute-launcher measure` command to ensure they meet the performance requirements. The model names for use with the launcher are:
+The model names for use with the launcher are:
 
 - `gemma3:4b`
 - `gemma3:12b`
@@ -49,10 +38,6 @@ You should test these models on your hardware using the `dkn-compute-launcher me
 - `llama3.1:8b-instruct`
 - `llama3.2:1b-instruct`
 - `mistral-nemo:12b`
-
-<Note>
-API-based models (like those from Gemini, OpenAI, and Claude) do not require local measurement with the `measure` command, as their performance depends on the API provider, not your local hardware. You only need to measure locally hosted Ollama models.
-</Note>
 
 ## Changing Models
 
@@ -146,6 +131,4 @@ Below are some performance benchmarks for running supported Ollama models on var
   </Accordion>
 </AccordionGroup>
 
-<Note>
-  In addition to these locally hosted models, you can run any API level providers (Gemini, OpenRouter, OpenAI) regardless of your local specs (though you will need valid API keys).
-</Note> 
+ 

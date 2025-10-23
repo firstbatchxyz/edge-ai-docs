@@ -1,7 +1,7 @@
 # Dria Documentation
 
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://docs.dria.com)
-[![Twitter Follow](https://img.shields.io/twitter/follow/DriaAI?style=social)](https://twitter.com/DriaAI)
+[![Twitter Follow](https://img.shields.io/twitter/follow/driaforall?style=social)](https://x.com/driaforall)
 
 ## Overview
 
